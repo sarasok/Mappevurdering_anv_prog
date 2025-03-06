@@ -3,3 +3,11 @@ hei
 hå
 
 test 2
+
+git push origin main // pusher til main
+sette op branches
+git commit // 
+git add 1,2,3 -> kan pushe kun noen av endringene i branchene 
+git commit - m // skriver message etter m
+git branch 
+
