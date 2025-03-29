@@ -1,0 +1,11 @@
+MAPPE DEL 1:
+
+Har hentet inn 3 csv filer fra frost med ulike dataer for været. En for lufttrykk, en for nedbør og en for temperatur. 
+Videre grupperte vi dataene etter dato. Vi måtte derfor lage en ny csv fil for temperatur data, fordi disse målingene
+var for hvert 15. min, og ikke for hver dag. Derfor lagde vi en funksjon som regner ut gjennomsnittet for hver dag. 
+
+Når vi fikk lagd denne samlet csv-filen, opprettet vi en backup, slik at vi kunne manuelt legge inn feil/mangler for å
+deretter rette opp i feilene. Dette var fordi vi ikke fant noen naturlige feil i de datasettene vi hentet inn. 
+Vi har lagd funksjoner for å lokalisere manglende verdier (Nan), håndtere negative nedbør- og lufttrykkverdier, 
+og skal videre lage en funksjon for å håndtere feil datoer. I tillegg har vi opprettet en ny csv-fil som 
+oppdaterer de verdiene som var feil i den originale csv-filen. For å gjøre dataen mer oversiktlig, har vi brukt pandas. 
