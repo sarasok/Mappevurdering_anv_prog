@@ -9,3 +9,4 @@ deretter rette opp i feilene. Dette var fordi vi ikke fant noen naturlige feil i
 Vi har lagd funksjoner for å lokalisere manglende verdier (Nan), håndtere negative nedbør- og lufttrykkverdier, 
 og skal videre lage en funksjon for å håndtere feil datoer. I tillegg har vi opprettet en ny csv-fil som 
 oppdaterer de verdiene som var feil i den originale csv-filen. For å gjøre dataen mer oversiktlig, har vi brukt pandas. 
+
