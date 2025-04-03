@@ -1,5 +1,4 @@
 rad 7: 2024-07-06 fjerner lufttrykk (fjernet ikke komma)
-rad 23: 2024-07-22 byttet temperatur fra 15.349999999999998 til 153.49999999999998
+rad 112: 2024-04-21 byttet temperatur fra 9.0 til 90.
 rad 35: 2024-08-03 fjernet temperatur(ikke komma)
-rad 136: 2024-11-12 negativ nedbør: fra 2.8 til -2.8
-rad 164: 2024-12-10 endrer til 2024-12-18
+rad 137: 2024-11-12 negativ nedbør: fra 0.2 til -0.2
