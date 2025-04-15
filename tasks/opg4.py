@@ -7,17 +7,30 @@
 import pandas as pd
 import numpy as np
 
-class MiljoAnalyse:
-    def __init__(self, "R_sammenslaaing_gjsnitt.csv"):
-        self.df = pd.read_csv("R_sammenslaaing_gjsnitt.csv")
+class MiljoPerMnd:
+    def __init__(self, filnavn):
+        self.df = pd.read_csv(filnavn)
 
-    def kolonner(self):
-        return list(self.df.columns)
+        # Sørg for at 'Dato' er datetime-objekt
+        self.df["Dato"] = pd.to_datetime(self.df["Dato"], errors="coerce")
 
-    def median(self, kol):
-        return np.median(self.df[kol].dropna())
+        # Legg til en månedskolonne for gruppering
+        self.df["Måned"] = self.df["Dato"].dt.month
 
-    def standardavvik(self, kol):
-        return np.std(self.df[kol].dropna(), ddof=1)
-    def
-    
+        # Kolonner vi skal analysere
+        self.kolonner = [
+            "Temperatur (°C)",
+            "Lufttrykk (hPa)",
+            "Nedbør (mm)",
+            "Relativ fuktighet (%)",
+            "Skydekke (oktas)"
+        ]
+
+    def gjennomsnitt_per_mnd(self):
+        return self.df.groupby("Måned")[self.kolonner].mean().round(2)
+
+    def median_per_mnd(self):
+        return self.df.groupby("Måned")[self.kolonner].median().round(2)
+
+    def standardavvik_per_mnd(self):
+        return self.df.groupby("Måned")[self.kolonner].std(ddof=1).round(2)
