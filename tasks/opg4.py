@@ -1,9 +1,3 @@
-#gjennomsnitt, median og standardavvik (numpy, pandas)
-#avdekke mønstre
-#statistisk analyse for å finne sammenheng mellom to variabler i datasettet
-#skjevheter under analyser, hvordan sikre at den er pålitelig
-#visualisere
-
 import pandas as pd
 import numpy as np
 
@@ -24,12 +18,15 @@ class MiljoPerMnd:
             "Skydekke (oktas)"
         ]
 
+    # Lager gruppe for gjennomsnittlige verdier per måned
     def gjennomsnitt_per_mnd(self):
         return self.df.groupby(["År", "Måned"])[self.kolonner].mean().round(2)
 
+    # Lager en gruppe for gjennomsnittlig median per måned
     def median_per_mnd(self):
         return self.df.groupby(["År", "Måned"])[self.kolonner].median().round(2)
 
+    # Lager en gruppe for gjennomsnittlig standardavvik per måned
     def standardavvik_per_mnd(self):
         return self.df.groupby(["År", "Måned"])[self.kolonner].std(ddof=1).round(2)
 
