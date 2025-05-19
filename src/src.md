@@ -1,0 +1,3 @@
+I src-mappen inneholder all funksjonalitet for mappe del 2. Dette er gunstig fordi det gir oss bedre struktur og kontroll. på denne måten får vi kode som er skilt fra datafiler, notebooker og tester. Src-mappen vår inneholder .py filer som er strukturert som funksjoner og klasser. Denne funksjonaliteten importeres deretter videre i notebooken "del_2.ipynb" som fremstiller det vi har kodet i src.
+
+ Filen opg4.py 

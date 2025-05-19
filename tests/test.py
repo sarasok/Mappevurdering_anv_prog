@@ -3,8 +3,15 @@ import pandas as pd
 import numpy as np
 import tempfile
 import os
+import sys
+
+# Legg til src-mappa i søkestien
+sti_til_src = os.path.abspath(os.path.join(os.path.dirname(__file__), "../src"))
+sys.path.append(sti_til_src)
+
 from opg5 import VærDataPlotter
 from opg4 import MiljoPerMnd
+
 
 # Tester funksjonalitet i klassen VærDataPlotter fra opg5.py
 class TestVærDataPlotter(unittest.TestCase):
