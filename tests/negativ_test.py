@@ -10,7 +10,7 @@ sys.path.append(sti_til_src)
 
 from opg4 import MiljoPerMnd #Henter inn klassen MiljoPerMnd fra opg4 som er hentet inn via src path
 from opg5 import VærDataPlotter #Henter inn klassen VærDataPlotter fra opg5 som er hentet inn via src path
-from opg6_analyse import tren_modell #Henter inn klassen  fra opg5 som er hentet inn via src path
+from opg6_analyse import regresjon #Henter inn klassen  fra opg5 som er hentet inn via src path
 
 
 #Negativ test til opgave 4
@@ -35,7 +35,7 @@ def test_miljo_negativ_mangler_kolonne():
         _ = analyse.gjennomsnitt_per_mnd()
         assert False, "Test failed: Manglende kolonne burde ha kastet en KeyError"
     except Exception as e:
-        print("Test passed: Caught expected exception:", type(e).__name__, "-", e)
+        print("Test case passed: Caught expected exception:", type(e).__name__, "-", e)
     finally:
         os.remove(tmp.name)
 
@@ -59,7 +59,7 @@ def test_korrelasjonsheatmap_negativ():
         plotter.tegn_korrelasjonsheatmap()  # Forventer feil siden dett ikke er noen numeriske kolonner
         assert plotter.df.select_dtypes(include='number').shape[1] > 0, "Test case failed"
     except Exception as e:
-        print("Test passed: Caught expected exception", type(e), "-", e)
+        print("Test case passed: Caught expected exception:", type(e), "-", e)
     finally:
         os.remove(tmp.name)
 
@@ -75,7 +75,6 @@ def test_bør_ta_med_paraply_feil_input():
         # Dette vil feile fordi "høy" ikke kan sammenlignes med tall
         assert bør_ta_med_paraply("høy", None) == "Ta med paraply!", "Test case failed"
     except Exception as e:
-        print("Test case passed: Fanget forventet unntak", type(e).__name__, "-", e)
+        print("Test case passed: Caught expected exception:", type(e).__name__, "-", e)
 
 test_bør_ta_med_paraply_feil_input()
-
