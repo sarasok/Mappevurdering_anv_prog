@@ -1,17 +1,22 @@
-# src/visualisering.py
 import matplotlib.pyplot as plt
 import seaborn as sns
 import pandas as pd
 
+# Klasse for å lage ulike grafer relatert til luftforurensning og vær
 class PollutionVisualizer:
+
     @staticmethod
     def plot_interpolation(df_original, df_filled, kolonne, start_dato, slutt_dato):
+        # Viser hvordan manglende verdier i en valgt kolonne blir fylt ut ved interpolering, i en gitt tidsperiode.
+        # Velg data i angitt datoperiode
         original = df_original.loc[start_dato:slutt_dato]
         interpolert = df_filled.loc[start_dato:slutt_dato]
 
+        # Finn hvilke datoer som manglet før interpolering
         mangler = df_original[kolonne].isna()
         interpolerte_datoer = df_original[mangler].loc[start_dato:slutt_dato].index
 
+        # Lag graf som sammenligner før og etter interpolering
         plt.figure(figsize=(10, 5))
 
         plt.plot(original.index, original[kolonne], label="Før interpolering", color='red', marker='o', alpha=0.6)
@@ -27,10 +32,12 @@ class PollutionVisualizer:
         plt.tight_layout()
         plt.show()
 
+
     @staticmethod
     def plot_ukentlig_no2(weekly_no2, weekly_no2_clean):
         import matplotlib.pyplot as plt
 
+        # Sammenligner NO₂-gjennomsnitt per uke før og etter interpolasjon og rensing.
         plt.figure(figsize=(14, 6))
         plt.plot(weekly_no2, label="Med hull", linestyle="--", alpha=0.6)
         plt.plot(weekly_no2_clean, label="Interpolert og renset", color="orange", linewidth=2)
@@ -45,6 +52,9 @@ class PollutionVisualizer:
         
     @staticmethod
     def plot_no2_ukentlig_barplot(weekly_no2_clean):
+        #Viser NO₂-data som stolpediagram for hver uke.
+        # Brukes etter at data er renset og interpolert.
+        
         tick_labels = weekly_no2_clean.index.to_period("W").strftime("Uke %W\n%Y")
 
         figur_no2, akse_no2 = plt.subplots(figsize=(14, 6))
@@ -64,6 +74,8 @@ class PollutionVisualizer:
     @staticmethod
     def vis_korrelasjonsmatrise(df: pd.DataFrame):
         """Viser korrelasjonsmatrise for numeriske variabler."""
+        
+        # Tar bare med numeriske kolonner
         numeric_df = df.select_dtypes(include=["number"])
         corr_matrix = numeric_df.corr()
 
