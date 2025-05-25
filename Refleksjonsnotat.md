@@ -23,7 +23,6 @@ Samarbeidet i gruppa har vært preget av god kommunikasjon, tydelig fordeling av
 Selv om vi kunne forbedret visualiseringene, er vi fornøyde med resultatet. Vi har lært mye om hele analyseprosessen og verktøy vi vil bruke videre. Totalt sett har prosjektet gitt oss bedre forståelse for hvordan data kan brukes til å si noe om miljøet.
 
 
-Videre utvikling:
 Om vi skulle jobbet videre med prosjektet, kunne vi gjort det mer brukervennlig ved å legge inn enkel brukerinput, for eksempel slik at brukeren kunne skrive inn en dato og få opp relevant graf. Vi kunne også lagt til flere typer grafer og prøvd å hente data automatisk hver dag. I tillegg kunne vi testet ut enkle klassifiseringsmodeller, for eksempel for å forutsi om det blir regn eller ikke.
 
 
