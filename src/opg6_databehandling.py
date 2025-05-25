@@ -1,22 +1,32 @@
-# src/databehandling.py
 
 import pandas as pd
 
 class Databehandling:
     @staticmethod
     def resample_og_interpoler(df_luft):
+        # Sjekk om kolonnenavn er "Dato", og gi den nytt navn
         if "Dato" in df_luft.columns:
             df_luft.rename(columns={"Dato": "date"}, inplace=True)
+        
+        # Gjør om dato-kolonnen til datetime-format
         df_luft["date"] = pd.to_datetime(df_luft["date"])
+
+        # Sett "date" som indeks for å kunne bruke tidsfunksjoner
         df_luft.set_index("date", inplace=True)
+        
+        # Gjør dataen daglig (resample til én rad per dag)
         df_luft_daily = df_luft.resample("D").mean()
+        
+        # Fyll inn manglende verdier med lineær interpolering
         df_luft_fylt = df_luft_daily.interpolate(method="linear")
 
+        # Skriv ut antall manglende verdier før og etter interpolering
         print("Antall manglende verdier før interpolering:")
         print(df_luft_daily.isna().sum())
         print("\nAntall manglende verdier etter interpolering:")
         print(df_luft_fylt.isna().sum())
-
+        
+        # Returner både original og fylt versjon
         return df_luft_daily, df_luft_fylt
 
     @staticmethod
