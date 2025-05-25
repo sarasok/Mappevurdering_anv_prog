@@ -47,3 +47,23 @@ Lager et interaktivt linjediagram hvor brukeren kan velge hvilken variabel som s
 
 - tegn_interaktiv_boblegraf()
 Lager et scatterplot der x-aksen er temperatur, y-aksen er lufttrykk, fargen representerer relativ fuktighet og størrelsen på boblene viser nedbør. Denne typen graf gir mange dimensjoner av informasjon i ett plott.
+
+
+*opg6.py*
+I oppgave 6 jobber vi med å kombinere, rense, analysere og modellere både vær- og luftkvalitetsdata for å forutsi skydekke og evaluere luftforhold. Dette gjøres gjennom en helhetlig datapipeline som involverer preprocessing, outlierfjerning, interpolering, regresjonsmodellering og visualisering.
+
+Modulen består av flere Python-filer som er organisert i klasser og funksjoner for god struktur og gjenbrukbarhet:
+
+opg6_databehandling.py:
+Denne modulen håndterer datarensing og sammenslåing. Vi interpolerer manglende verdier med lineær metode, fjerner uteliggere med IQR og definerte grenser, og sørger for at tidsseriene fra ulike datakilder (vær og luftkvalitet) blir synkronisert. Vi resampler også luftdata til daglig nivå og bruker merge for å kombinere datasettene på datokolonnen. Dette gir et komplett datasett for analyse og modellering.
+
+opg6_analyse.py:
+Her defineres funksjoner for å trene en lineær regresjonsmodell med scikit-learn. Vi bruker standardisering (StandardScaler) før modelltrening, og funksjonen returnerer både modellen, skaleringsobjektet og evalueringsmetrikker som MSE, R² og RMSE. Det er også en hjelpefunksjon bør_ta_med_paraply() som gir anbefaling basert på predikert skydekke og luftfuktighet – et eksempel på praktisk bruk av modellresultatet.
+
+opg6_skydekkemodel.py:
+Klassen SkydekkePredictor bruker tre værvariabler – temperatur, lufttrykk og relativ fuktighet – som input for å predikere skydekke. Etter trening evalueres modellen og visualiserer forskjellen mellom predikert og faktisk skydekke. Modell og scaler lagres til fil for videre bruk.
+
+opg6_visualisering.py:
+Her lager vi visualiseringer av interpolerte data og resultatene fra modellen. Vi viser bl.a. interpolering av NO₂-data, glattet utvikling av skydekke og luftfuktighet, samt korrelasjonsmatrise for å utforske sammenhenger mellom variablene. Disse plottene gir innsikt i både datakvalitet og modellens ytelse.
+
+Oppgaven kombinerer flere ferdigheter fra tidligere oppgaver og viser hvordan man bygger en reell prediksjonsmodell med tilhørende datahåndtering, evaluering og formidling.
