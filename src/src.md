@@ -1,6 +1,6 @@
 I src-mappen inneholder all funksjonalitet for mappe del 2. Dette er gunstig fordi det gir oss bedre struktur og kontroll. på denne måten får vi kode som er skilt fra datafiler, notebooker og tester. Src-mappen vår inneholder .py filer som er strukturert som funksjoner og klasser. Denne funksjonaliteten importeres deretter videre i notebooken "del_2.ipynb" som fremstiller det vi har kodet i src.
 
-# opg4.py:
+# opg4.py: (Se filen: ['opg4.py'](opg4.py))
 I filen opg4.py oppretter vi MiljoPerMnd-klassen.
 Her analysere vi miljø- og værdata ved hjelp av statistiske metoder. Hensikten er å avdekke mønstre og variasjoner i viktige værvariabler over tid, spesielt på månedsbasis. Programmet er bygd opp som en Python-klasse kalt MiljoPerMnd, og benytter bibliotekene pandas og numpy til databehandling.
 
@@ -19,7 +19,7 @@ Beregner medianverdien for hver variabel per måned. Medianen er nyttig for å f
 Beregner standardavviket, som viser hvor mye målingene svinger rundt gjennomsnittet. Et høyt standardavvik indikerer store variasjoner fra dag til dag, mens lavt standardavvik tyder på stabile værforhold.
 
 
-# opg5.py:
+# opg5.py: (Se filen: ['opg5.py'](opg5.py))
 Her lager vi VærDataPlotter-klassen
 Den gjør det enklere å visualisere og utforske vær- og klimadata i datasettet vårt. Klassen bruker bibliotekene pandas, matplotlib, seaborn og plotly for å lage ulike typer grafer, både statiske og interaktive.
 Klassen gjør det lettere å finne sammenhenger og trender i ulike værvariabler som temperatur, lufttrykk, nedbør, skydekke og relativ fuktighet over tid.
@@ -54,7 +54,7 @@ I oppgave 6 blir det kombinert, renset, analysert og modelleret både vær- og l
 
 Modulen består av flere Python-filer som er organisert i klasser og funksjoner for god struktur og gjenbrukbarhet:
 
-## opg6_databehandling.py:
+## opg6_databehandling.py: (Se filen: ['opg6_databehandling.py'](opg6_databehandling.py))
 Denne modulen håndterer datarensing og sammenslåing. Vi interpolerer manglende verdier med lineær metode, fjerner uteliggere med IQR og definerte grenser, og sørger for at tidsseriene fra ulike datakilder (vær og luftkvalitet) blir synkronisert. Vi resampler også luftdata til daglig nivå og bruker merge for å kombinere datasettene på datokolonnen. Dette gir et komplett datasett for analyse og modellering.
 
 Funksjonene i denne modulen er:
@@ -68,7 +68,7 @@ Fjerner outliers fra en tidsserie basert på IQR-metoden.
 Slår sammen vær- og luftdata på datokolonnen for videre analyse og modelltrening.
 
 
-## opg6_analyse.py:
+## opg6_analyse.py: (Se filen: ['opg6_analyse.py'](opg6_analyse.py))
 Her defineres funksjoner for å trene en lineær regresjonsmodell med scikit-learn. Vi bruker standardisering (StandardScaler) før modelltrening, og funksjonen returnerer både modellen, skaleringsobjektet og evalueringsmetrikker som MSE, R² og RMSE. Det er også en hjelpefunksjon bør_ta_med_paraply() som gir anbefaling basert på predikert skydekke og luftfuktighet – et eksempel på praktisk bruk av modellresultatet.
 
 
@@ -80,7 +80,7 @@ Lagrer modell og scaler som .pkl-filer for gjenbruk.
 ### bør_ta_med_paraply()
 En enkel heuristisk funksjon som gir anbefaling (f.eks. ta med paraply) basert på skydekke og fuktighet – praktisk anvendelse av modellresultater.
 
-## opg6_skydekkemodel.py:
+## opg6_skydekkemodel.py: (Se filen: ['opg6_skydekkemodel.py'](opg6_skydekkemodel.py))
 Klassen SkydekkePredictor bruker tre værvariabler – temperatur, lufttrykk og relativ fuktighet – som input for å predikere skydekke. Etter trening evalueres modellen og visualiserer forskjellen mellom predikert og faktisk skydekke. Modell og scaler lagres til fil for videre bruk.
 
 
@@ -93,7 +93,7 @@ Trener modellen, evaluerer ytelse og viser graf over faktisk vs. predikert skyde
 Lagrer modellen og scaleren til fil.
 
 
-## opg6_visualisering.py:
+## opg6_visualisering.py: (Se filen: ['opg6_visualisering.py'](opg6_visualisering.py))
 Her lager vi visualiseringer av interpolerte data og resultatene fra modellen. Vi viser bl.a. interpolering av NO₂-data, glattet utvikling av skydekke og luftfuktighet, samt korrelasjonsmatrise for å utforske sammenhenger mellom variablene. Disse plottene gir innsikt i både datakvalitet og modellens ytelse.
 
 Funksjonene i denne modulen er:

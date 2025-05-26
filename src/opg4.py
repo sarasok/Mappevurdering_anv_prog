@@ -41,6 +41,6 @@ class MiljoPerMnd:
         return self.df.groupby(["År", "Måned"])[self.kolonner].median().round(2)
 
     def standardavvik_per_mnd(self):
-        # Beregner standardavvik per måned (mål på spredning i data)
+        # Beregner standardavvik per måned 
         # Dette hjelper med å oppdage ustabilitet eller store variasjoner i målinger
         return self.df.groupby(["År", "Måned"])[self.kolonner].std(ddof=1).round(2)
