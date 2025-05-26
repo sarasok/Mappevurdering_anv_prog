@@ -10,7 +10,7 @@ sys.path.append(sti_til_src)
 
 from opg4 import MiljoPerMnd #Henter inn klassen MiljoPerMnd fra opg4 som er hentet inn via src path
 from opg5 import VærDataPlotter #Henter inn klassen VærDataPlotter fra opg5 som er hentet inn via src path
-from opg6_analyse import regresjon #Henter inn klassen  fra opg5 som er hentet inn via src path
+from opg6_analyse import regresjon #Henter inn klassen regresjon fra opg6 som er hentet inn via src path
 
 
 #Negativ test til opgave 4
@@ -67,14 +67,19 @@ test_korrelasjonsheatmap_negativ()
 
 
 #Negativ test til opg 6
+def test_regresjon_negativ_feil_input():
+    # Lager testdata der y-verdiene er tekst, som ikke fungerer i regresjon
+    df = pd.DataFrame({
+        "Dato": pd.date_range(start="2023-01-01", periods=5),
+        "x": [1, 2, 3, 4, 5],
+        "y": ["a", "b", "c", "d", "e"]  # ugyldig for regresjon
+    })
 
-
-def test_bør_ta_med_paraply_feil_input():
-    # Prøver med ugyldige typer: tekst og None
     try:
-        # Dette vil feile fordi "høy" ikke kan sammenlignes med tall
-        assert bør_ta_med_paraply("høy", None) == "Ta med paraply!", "Test case failed"
+        modell = regresjon(df)
+        modell.kjør_regresjon("x", "y")  # antar denne metoden finnes
+        assert False, "Test failed: Regresjon burde ha feilet med ikke-numeriske y-verdier"
     except Exception as e:
         print("Test case passed: Caught expected exception:", type(e).__name__, "-", e)
 
-test_bør_ta_med_paraply_feil_input()
+test_regresjon_negativ_feil_input()

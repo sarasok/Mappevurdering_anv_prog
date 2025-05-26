@@ -7,7 +7,7 @@ Totalt kjøres 13 automatiske tester:
 3 tester for MiljoPerMnd (gjennomsnitt, median og standardavvik per måned)
 7 tester for Databehandling (f.eks. interpolering, uteliggere, og manglende datoer)
 
-*Unitest*
+*Unitest* (Se filen:['test.py'](test.py))
 "test_alle_klasser.py" inneholder enhetstester med unittest
 Dette er den viktigste testfilen og inneholder enhetstester for prosjektet. Testene er organisert i tre klasser (en fra hver oppgave):
 - VærDataPlotter (fra "opg5.py")
@@ -16,7 +16,8 @@ Dette er den viktigste testfilen og inneholder enhetstester for prosjektet. Test
 tearDown og setUp er ikke tester, men metoder som brukes i unittesten for hver klasse og har som formål å organisere og rydde opp imellom testene. Dette sikrer at testene er isolerte og ikke påvirker hverandre.
 Før hver test kjøres, oppretter setUp()-metoden et nytt datasett og lagrer det som en midlertidig CSV-fil. Etter testene kjøres tearDown() for å rydde opp. 
 
-*Negativ test* 
+
+*Negativ test* (Se filen:['negativ_test.py'](negativ_test.py))
 Denne testfilen er organisert i tre klasser (en fra hver oppgave):
 - def test_miljo_negativ_mangler_kolonne (fra "opg4.py")
 - test_korrelasjonsheatmap_negativ (fra "opg5.py")
