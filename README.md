@@ -136,7 +136,7 @@ Alternativt kan funksjoner og klasser importeres direkte fra `src/` i egne skrip
 ## Testing
 
 ### Enhetstester med `unittest`
-
+,
 Fil: [`test.py`](./tests/test.py)
 
 Kjøres slik:
