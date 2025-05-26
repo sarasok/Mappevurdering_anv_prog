@@ -1,5 +1,5 @@
 - 
-Strukturer readme filer slik: 
+
 # Prosjekttittel 
 Kort prosjektbeskrivelse. 
 ## Innhold - Datainnsamling - Datavask og analyse - Simulering av fremtidig værdata 

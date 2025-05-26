@@ -1,10 +1,85 @@
 MAPPE DEL 2:
-## Business Understanding
-Vi ønsker å kunne forutsi skydekke ut fra værmålinger. Dette kan være nyttig for planlegging, miljøanalyse eller energibehov.
 
-## Data Understanding
-Vi bruker historiske værdata (temperatur, lufttrykk og fuktighet) sammen med skydekke som målvariabel. Vi visualiserer også datasettet for å forstå trender og mangler.
 
+## Oppgave 4: Statistisk analyse av miljødata
+
+I denne delen av prosjektet brukte vi statistiske metoder med NumPy og pandas for å analysere månedlige trender i værdata. Målet var å oppsummere dataene med sentralmål og spredningsmål, samt undersøke mulige sammenhenger mellom variabler.
+
+### Beregning av statistiske mål
+Vi brukte følgende statistiske mål for å beskrive utviklingen av værvariabler over tid:
+- Gjennomsnitt: For å finne den typiske verdien hver måned.
+- Median: For å unngå skjevhet fra ekstreme verdier.
+- Standardavvik: For å måle hvor mye verdiene varierer hver måned.
+
+Disse ble beregnet månedlig for fem sentrale variabler:
+- Temperatur (°C)
+- Lufttrykk (hPa)
+- Nedbør (mm)
+- Relativ fuktighet (%)
+- Skydekke (oktas)
+
+### Metodikk og gruppering
+Vi brukte pandas `groupby` for å gruppere data etter år og måned. Dette gjorde det mulig å trekke ut mønstre i dataene over tid, og sammenligne hvordan ulike måneder skiller seg ut.
+
+### Avdekking av mønstre og sammenhenger
+Ved å analysere gjennomsnitt og standardavvik kunne vi se:
+- Sesongvariasjoner i temperatur og nedbør
+- Hvor stabile eller variable forholdene var måned for måned
+
+I tillegg ble sammenhenger mellom variabler utforsket ved hjelp av korrelasjonsanalyse i andre oppgaver, men resultatene her la grunnlaget for videre tolkning.
+
+### Visualisering og tolkning
+Resultatene fra statistikken ble senere visualisert, hvor vi brukte linjeplott, glidende gjennomsnitt og korrelasjonsheatmaps. Den statistiske oppsummeringen i denne oppgaven ga et godt grunnlag for disse visualiseringene.
+
+### Erfaring og refleksjon
+- Vi lærte hvordan man bruker pandas og NumPy for å gruppere og analysere store datasett.
+- Oppgaven viste verdien av å bruke flere statistiske mål samtidig.
+- Den gjorde det også tydelig hvor viktig det er å kontrollere for skjevheter i datagrunnlaget før man går videre til tolkning og modellering.
+
+
+## Oppgave 5: Visualisering av værdata
+
+- Koden ligger i `src/`, og visualiseringene er dokumentert i `notebooks/Opg5.ipynb`.
+
+I denne delen av prosjektet utviklet vi en fleksibel Python-klasse for visualisering av værdata. Målet var å utforske hvordan ulike klimavariabler som temperatur, lufttrykk, fuktighet, nedbør og skydekke varierer over tid, og hvordan disse kan presenteres på både statiske og interaktive måter.
+
+### Brukte biblioteker
+Vi benyttet flere populære biblioteker for databehandling og visualisering:
+- Pandas for lasting og behandling av datasettet
+- Matplotlib og Seaborn for å lage statiske grafer
+- Plotly for å lage interaktive visualiseringer
+
+### Implementering
+Vi opprettet en klasse `VærDataPlotter` med metoder som:
+- Leser værdata fra CSV
+- Konverterer datoer til riktig format
+- Tilrettelegger og tegner ulike grafer
+
+### Typer visualiseringer
+Vi lagde en rekke ulike visualiseringer for å utforske sammenhenger og mønstre:
+
+- Linjediagram med dobbel y-akse  
+  Viser temperatur og lufttrykk samtidig for å fange daglig variasjon i begge.
+
+- Glidende gjennomsnitt 
+  Viser trender i nedbør og skydekke ved å bruke 7-dagers snitt for å glatte ut støy.
+
+- Scatterplot med regresjonslinje
+  Visualiserer sammenhengen mellom temperatur og relativ fuktighet, med automatisk regresjonslinje.
+
+- Interaktive grafer
+  Brukeren kan:
+  - Se temperatur og lufttrykk med hover-effekt og zoom
+  - Velge mellom ulike variabler i en meny (én variabel om gangen)
+  - Utforske en boblegraf med temperatur (x), lufttrykk (y), farge (fuktighet) og størrelse (nedbør)
+
+- Korrelasjonsheatmap
+  Viser styrken på lineære sammenhenger mellom alle numeriske værvariabler.
+
+### Refleksjon og innsikt
+- Dobbel y-akse og glidende gjennomsnitt gjorde det enklere å tolke samvariasjoner og trender.
+- Interaktive grafer ga en mer utforskende opplevelse.
+- Heatmapet ga innsikt i hvilke variable som korrelerer sterkest
 
 
 ## Oppgave 6: Prediktiv analyse
