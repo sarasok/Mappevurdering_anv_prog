@@ -106,7 +106,9 @@ source venv/bin/activate  # Windows: venv\Scripts\activate
 
 3. **Installer avhengigheter**
 
-pip install -r requirements.txt
+venv\Scripts\python.exe -m pip install -r requirements_full.txt
+Her opplevde vi litt problemer, men man kan laste ned manuelt hvis et bibilotek ikke funker. 
+Feks: Skriv inn i terminal: venv\Scripts\python.exe -m pip install joblib
 
 ---
 
