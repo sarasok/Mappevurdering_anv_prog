@@ -1,85 +1,48 @@
+import unittest
 import pandas as pd
-import numpy as np
 import tempfile
 import os
 import sys
 
 # Legg til src-mappa i path
-sti_til_src = os.path.abspath(os.path.join(os.path.dirname(__file__), "../src"))
-sys.path.append(sti_til_src)
+sys.path.append(os.path.abspath(os.path.join(os.path.dirname(__file__), "../src")))
 
-from opg4 import MiljoPerMnd #Henter inn klassen MiljoPerMnd fra opg4 som er hentet inn via src path
-from opg5 import VærDataPlotter #Henter inn klassen VærDataPlotter fra opg5 som er hentet inn via src path
-from opg6_analyse import regresjon #Henter inn klassen regresjon fra opg6 som er hentet inn via src path
+from opg4 import MiljoPerMnd
+from opg5 import VærDataPlotter
+from opg6_analyse import regresjon
 
-
-#Negativ test til opgave 4
-def test_miljo_negativ_mangler_kolonne():
-    # Lager testdata uten "Temperatur (°C)"
-    test_data = pd.DataFrame({
-        "Dato": pd.date_range(start="2023-01-01", periods=5, freq="D"),
-        # "Temperatur (°C)" mangler!
-        "Lufttrykk (hPa)": [1010, 1012, 1011, 1013, 1010],
-        "Nedbør (mm)": [0, 1, 0, 2, 0],
-        "Relativ fuktighet (%)": [75, 78, 77, 76, 79],
-        "Skydekke (oktas)": [2, 3, 4, 3, 2]
-    })
-
-    # Skriver til midlertidig fil
-    with tempfile.NamedTemporaryFile(delete=False, suffix=".csv", mode="w", newline="", encoding="utf-8") as tmp:
-        test_data.to_csv(tmp.name, index=False)
-
-    try:
-        analyse = MiljoPerMnd(tmp.name)
-        # Dette vil kaste feil når gjennomsnitt_per_mnd() forsøker å bruke en manglende kolonne
-        _ = analyse.gjennomsnitt_per_mnd()
-        assert False, "Test failed: Manglende kolonne burde ha kastet en KeyError"
-    except Exception as e:
-        print("Test case passed: Caught expected exception:", type(e).__name__, "-", e)
-    finally:
+class TestNegativMiljoPerMnd(unittest.TestCase):
+    def test_mangler_kolonne(self):
+        df = pd.DataFrame({
+            "Dato": pd.date_range(start="2023-01-01", periods=5),
+            "Lufttrykk (hPa)": [1010, 1012, 1011, 1013, 1010],
+        })
+        with tempfile.NamedTemporaryFile(delete=False, suffix=".csv") as tmp:
+            df.to_csv(tmp.name, index=False)
+        with self.assertRaises(KeyError):
+            analyse = MiljoPerMnd(tmp.name)
+            analyse.gjennomsnitt_per_mnd()
         os.remove(tmp.name)
 
-test_miljo_negativ_mangler_kolonne()
-
-
-
-#Negativ test til opg 5:
-def test_korrelasjonsheatmap_negativ():
-    # Lager testdata uten numeriske kolonner
-    test_data = pd.DataFrame({
-        "Dato": pd.date_range(start="2023-01-01", periods=3),
-        "Tekst": ["x", "y", "z"]
-    })
-
-    with tempfile.NamedTemporaryFile(delete=False, suffix=".csv", mode="w", encoding="utf-8") as tmp:
-        test_data.to_csv(tmp.name, index=False)
-
-    try:
+class TestNegativVærDataPlotter(unittest.TestCase):
+    def test_uten_numeriske_kolonner(self):
+        df = pd.DataFrame({
+            "Dato": pd.date_range(start="2023-01-01", periods=3),
+            "Tekst": ["a", "b", "c"]
+        })
+        with tempfile.NamedTemporaryFile(delete=False, suffix=".csv") as tmp:
+            df.to_csv(tmp.name, index=False)
         plotter = VærDataPlotter(tmp.name)
-        plotter.tegn_korrelasjonsheatmap()  # Forventer feil siden dett ikke er noen numeriske kolonner
-        assert plotter.df.select_dtypes(include='number').shape[1] > 0, "Test case failed"
-    except Exception as e:
-        print("Test case passed: Caught expected exception:", type(e), "-", e)
-    finally:
+        with self.assertRaises(ValueError):
+            plotter.tegn_korrelasjonsheatmap()
         os.remove(tmp.name)
 
-test_korrelasjonsheatmap_negativ()
+class TestNegativParaply(unittest.TestCase):
+    def test_ugyldige_input(self):
+        with self.assertRaises(TypeError):
+            regresjon.bor_ta_med_paraply("høy", None)
+
+if __name__ == "__main__":
+    unittest.main()
 
 
-#Negativ test til opg 6
-def test_regresjon_negativ_feil_input():
-    # Lager testdata der y-verdiene er tekst, som ikke fungerer i regresjon
-    df = pd.DataFrame({
-        "Dato": pd.date_range(start="2023-01-01", periods=5),
-        "x": [1, 2, 3, 4, 5],
-        "y": ["a", "b", "c", "d", "e"]  # ugyldig for regresjon
-    })
-
-    try:
-        modell = regresjon(df)
-        modell.kjør_regresjon("x", "y")  # antar denne metoden finnes
-        assert False, "Test failed: Regresjon burde ha feilet med ikke-numeriske y-verdier"
-    except Exception as e:
-        print("Test case passed: Caught expected exception:", type(e).__name__, "-", e)
-
-test_regresjon_negativ_feil_input()
