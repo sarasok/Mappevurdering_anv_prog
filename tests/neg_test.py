@@ -9,7 +9,7 @@ sys.path.append(os.path.abspath(os.path.join(os.path.dirname(__file__), "../src"
 
 from opg4 import MiljoPerMnd
 from opg5 import VærDataPlotter
-from opg6_analyse import bør_ta_med_paraply
+from opg6_analyse import regresjon
 
 class TestNegativMiljoPerMnd(unittest.TestCase):
     def test_mangler_kolonne(self):
@@ -44,4 +44,5 @@ class TestNegativParaply(unittest.TestCase):
 
 if __name__ == "__main__":
     unittest.main()
+
 
