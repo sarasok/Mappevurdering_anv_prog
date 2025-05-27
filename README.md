@@ -97,8 +97,6 @@ I Oppgave 6 har vi bygget en komplett pipeline for prediktiv analyse av skydekke
 ---
 ## Dokumentasjon
 
-Prosjektet er grundig dokumentert med markdown-filer som forklarer hvert steg og hver delmappe. Her er en oversikt:
-
 Fil | Beskrivelse
 `README.md`: Hovedbeskrivelse av prosjektet, struktur, innhold og hvordan det kjøres. 
 `Refleksjonsnotat.md`: Refleksjon over hva vi har lært, utfordringer vi møtte, og erfaring med verktøy og samarbeid. 
