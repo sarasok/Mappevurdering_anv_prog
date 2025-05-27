@@ -20,6 +20,7 @@ I dette prosjektet har vi analysert vær- og miljødata i Trondheim i perioden 1
 
 ## Innhold
 
+
 ### Datainnsamling
 
 Vi hentet inn data fra to ulike API-kilder:
@@ -94,7 +95,20 @@ I Oppgave 6 har vi bygget en komplett pipeline for prediktiv analyse av skydekke
 * Korrelasjonsmatrise for hele datasettet
 
 ---
+## Dokumentasjon
 
+Prosjektet er grundig dokumentert med markdown-filer som forklarer hvert steg og hver delmappe. Her er en oversikt:
+
+Fil | Beskrivelse
+`README.md`: Hovedbeskrivelse av prosjektet, struktur, innhold og hvordan det kjøres. 
+`Refleksjonsnotat.md`: Refleksjon over hva vi har lært, utfordringer vi møtte, og erfaring med verktøy og samarbeid. 
+`data/data.md`: Informasjon om hvilke vær- og miljødata som er brukt, hvordan de er samlet inn og renset. 
+`notebook_mappe1/del1.md`: Dokumentasjon av oppgave 2: datainnsamling fra Frost API og aggregering av målinger. 
+`notebook_mappe2/del2.md`: Dokumentasjon av oppgave 6: prediktiv analyse med lineær regresjon, datarensing og visualiseringer. 
+`src/src.md`: Beskrivelse av Python-koden i `src/`, inkludert klasser og funksjoner brukt i analyse og visualisering. 
+`tests/tests.md`: Oversikt over teststrategien: både automatiske unittester og manuelle negative tester er inkludert. 
+
+---
 ## Installasjon
 
 1. **Klon repoet**
