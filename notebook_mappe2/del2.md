@@ -1,4 +1,4 @@
-MAPPE DEL 2:
+# MAPPE DEL 2:
 
 
 ## Oppgave 4: Statistisk analyse av miljødata

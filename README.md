@@ -1,4 +1,3 @@
-- 
 
 # Prosjekttittel 
 Kort prosjektbeskrivelse. 
@@ -14,8 +13,8 @@ Hvordan kjøre tester.
 
 
 # Analyse av vær- og miljødata
+I dette prosjektet har vi analysert vær- og miljødata i Trondheim i perioden 1. januar 2023 - 30. desember 2024. Vi har samlet inn og renset data, og deretter laget visualiseringer. Fra disse analysene ble det oppdaget sammenhenger og trender mellom de ulike miljøparametere. Videre la dette et grunnlag for å prediktere vær- og luftkvalitetsdata, for å kunne si noe om utviklingen i fremtiden.
 
-Et tverrfaglig datavitenskapelig prosjekt som kombinerer innhenting, rensing, visualisering og prediksjon av vær- og luftkvalitetsdata. Prosjektet er utviklet med mål om å forstå sammenhenger mellom ulike miljøparametere og gi et grunnlag for å vurdere for eksempel luftforhold og behov for å ta med paraply.
 
 ---
 
@@ -44,8 +43,8 @@ Notebook: [`rense_data.ipynb`](./notebook_mappe1/rense_data.ipynb)
 
 * Manglende verdier ble fylt inn med lineær interpolasjon (gjennomsnitt av dagen før og etter)
 * Urealistiske verdier (f.eks. temperatur < -50 °C eller > 50 °C) ble erstattet
-* Negative verdier i fysiske målinger ble gjort positive med `abs()`
-* Datokonsistens ble sikret: alle datoer konvertert til `datetime` og gjort sammenhengende
+* Negative verdier i fysiske målinger ble gjort positive med abs()
+* Datokonsistens ble sikret: alle datoer konvertert til datetime og gjort sammenhengende
 
 For statistisk analyse ble det opprettet en klasse `MiljoPerMnd` i [`opg4.py`](./src/opg4.py), som viser:
 
@@ -67,7 +66,7 @@ Funksjonaliteten dekker:
 * Glidende gjennomsnitt av nedbør og skydekke
 * Scatterplot med regresjonslinje for temperatur vs. fuktighet
 * Heatmap for korrelasjon mellom alle numeriske kolonner
-* Interaktive grafer med `plotly`, inkludert dropdown-meny og boblegraf
+* Interaktive grafer med plotly, inkludert dropdown-meny og boblegraf
 
 ---
 
@@ -98,38 +97,37 @@ I Oppgave 6 har vi bygget en komplett pipeline for prediktiv analyse av skydekke
 
 ## Installasjon
 
-1. **Klon prosjektet**
+1. **Klon repoet**
 
-```bash
-git clone <repo-url>
-cd prosjektmappe
-```
+git clone <https://github.com/sarasok/Mappevurdering_anv_prog.git>
 
-2. **Opprett virtuelt miljø (valgfritt, men anbefalt)**
+2. **Opprett virtuelt miljø**
 
-```bash
 python -m venv venv
 source venv/bin/activate  # Windows: venv\Scripts\activate
-```
 
 3. **Installer avhengigheter**
 
-```bash
 pip install -r requirements.txt
-```
 
 ---
 
 ## Bruk
 
-Kjør notebookene i rekkefølge for å gjenskape analysen:
+Kjør filene i rekkefølge for å gjenskape analysen:
 
-1. `kode_som_henter_API.ipynb`
-2. `sammenslaaing_gjsnitt.ipynb`
-3. `rense_data.ipynb`
-4. `del_2.ipynb`
-
-Alternativt kan funksjoner og klasser importeres direkte fra `src/` i egne skript.
+1. ['kode_som_henter_API.ipynb'](./notebook_mappe1/kode_som_henter_API.ipynb)
+2. ['sammenslaaing_gjsnitt.ipynb'](./notebook_mappe1/sammenslaaing_gjsnitt.ipynb)
+3. ['kode_som_lager_feil.py'](./notebook_mappe1/kode_som_lager_feil.py)
+4. ['rense_data.ipynb'](./notebook_mappe1/rense_data.ipynb)
+5. ['opg4.py'](./src/opg4.py)
+6. ['opg5.py'](./src/opg5.py)
+7. ['opg6_analyse.py'](./src/opg6_analyse.py)
+8. ['opg6_databehandling.py'](./src/opg6_databehandling.py)
+9. ['opg6_skydekkemodel.py'](./src/opg6_skydekkemodel.py)
+10. ['opg6_visualisering.py'](./src/opg6_visualisering.py)
+11. ['Opg_4_5.ipynb'](./notebook_mappe2/Opg_4_5.ipynb)
+12. ['Opg6.ipynb'](./notebook_mappe2/Opg6.ipynb)
 
 ---
 
@@ -140,39 +138,26 @@ Alternativt kan funksjoner og klasser importeres direkte fra `src/` i egne skrip
 Fil: [`test.py`](./tests/test.py)
 
 Kjøres slik:
-
-```bash
 python -m unittest tests/test.py
-```
 
-Tester:
+Tester klassene:
 
-* `MiljoPerMnd` (statistiske analyser)
-* `VærDataPlotter` (datainnhenting og SMA)
-* `Databehandling` (interpolasjon, outliers, manglende datoer)
+* MiljoPerMnd
+* VærDataPlotter
+* Databehandling
 
-Totalt 13 tester, isolert med `setUp` og `tearDown`.
+Prosjektet har totalt 13 tester.
 
 ---
 
-### Negativtester (manuelle)
-
+### Negativtester 
 Fil: [`negativ_test.py`](./tests/negativ_test.py)
 
 Kjøres slik:
-
-```bash
 python tests/negativ_test.py
-```
 
 Tester hvordan koden håndterer:
 
-* Manglende kolonner (opg4)
-* Ikke-numeriske data (opg5)
-* Feil input i beslutningsfunksjon (opg6)
-
-Disse testene bruker `try/except` og `assert` for å fange forventede feil.
-
----
-
-> Prosjektet er bygget opp med god mappeinndeling og struktur (data, src, notebooks, tests), og viser hvordan datavitenskap kan brukes i praksis for å trekke innsikt fra reelle værdata.
+* Manglende kolonner
+* Ikke-numeriske data 
+* Feil input i beslutningsfunksjon
