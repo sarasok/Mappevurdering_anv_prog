@@ -34,7 +34,7 @@ def lager_feil():
         # Feiltype 2: Setter inn ekstrem temperaturverdi langt utenfor normalen
         elif feiltype == "ekstrem_temp":
             ekstrem_verdi = random.uniform(-100, -60) if random.random() < 0.5 else random.uniform(60, 100)
-            df.at[i, "Temperatur (°C)"] = round(extrem_verdi, 1)
+            df.at[i, "Temperatur (°C)"] = round(ekstrem_verdi, 1)
 
         # Feiltype 3: Fjerner en verdi (gjør den til None = manglende data)
         elif feiltype == "mangler":
