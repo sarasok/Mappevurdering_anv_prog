@@ -1,17 +1,4 @@
 
-# Prosjekttittel 
-Kort prosjektbeskrivelse. 
-## Innhold - Datainnsamling - Datavask og analyse - Simulering av fremtidig værdata 
-## Installasjon 
-1. Klon repoet 
-2. Opprett virtuell miljø 
-3. Installer avhengigheter(requirements.txt) 
-## Bruk 
-Hvordan kjøre koden. 
-## Testing 
-Hvordan kjøre tester. 
-
-
 # Analyse av vær- og miljødata
 I dette prosjektet har vi analysert vær- og miljødata i Trondheim i perioden 1. januar 2023 - 30. desember 2024. Vi har samlet inn og renset data, og deretter laget visualiseringer. Fra disse analysene ble det oppdaget sammenhenger og trender mellom de ulike miljøparametere. Videre la dette et grunnlag for å prediktere vær- og luftkvalitetsdata, for å kunne si noe om utviklingen i fremtiden.
 
