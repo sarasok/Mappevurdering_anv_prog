@@ -49,7 +49,7 @@ class regresjon:
         joblib.dump(scaler, scaler_fil)
 
 
-    def bør_ta_med_paraply(skydekke, fuktighet):
+    def bor_ta_med_paraply(skydekke, fuktighet):
         #Gir en anbefaling basert på predikert skydekke og fuktighet.
         if skydekke > 6 and fuktighet > 80:
             return "Ta med paraply!"

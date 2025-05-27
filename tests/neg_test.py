@@ -40,7 +40,7 @@ class TestNegativVærDataPlotter(unittest.TestCase):
 class TestNegativParaply(unittest.TestCase):
     def test_ugyldige_input(self):
         with self.assertRaises(TypeError):
-            bør_ta_med_paraply("høy", None)
+            regresjon.bor_ta_med_paraply("høy", None)
 
 if __name__ == "__main__":
     unittest.main()
